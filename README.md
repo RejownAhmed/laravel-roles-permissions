@@ -86,7 +86,7 @@ To test if the permission and role is working, you can simply use the ``can()`` 
   ```
 - In laravel blade. 
   
-  ```php
+  ```blade
   @can('view_posts')
    Yes I can view the post
   @endcan()
