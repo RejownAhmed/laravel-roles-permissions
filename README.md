@@ -50,7 +50,7 @@ To add permissions to a role the Role method ``givePermissionTo()``. Here's the 
   $role->givePermissionTo('view_posts')
   ```
 
-- Or pass in the role model directly. E.g 
+- Or pass in the permission model directly. E.g 
   
   ```php
   $permission = Permission::first();
@@ -66,7 +66,7 @@ To revoke/detach/remove a permission from a role the Role method ``revokePermiss
   $role->revokePermission('view_posts')
   ```
 
-- Or pass in the role model directly. E.g 
+- Or pass in the permission model directly. E.g 
   
   ```php
   $permission = Permission::first();
