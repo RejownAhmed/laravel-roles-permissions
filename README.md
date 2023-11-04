@@ -1,5 +1,5 @@
 
-# Project Title
+# Laravel Roles And Permission
 
 This project implements a simple yet powerful role permission features in Laravel
 
