@@ -73,7 +73,7 @@ To revoke/detach/remove a permission from a role the Role method ``revokePermiss
   $role->revokePermission($permission);
   ```
 
-### Test the permissions
+### Implementation
 To test if the permission and role is working, you can simply use the ``can()`` method either on the route or in the blade file. For example:-
 - On the route itself. 
   
