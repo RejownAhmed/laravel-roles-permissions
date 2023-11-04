@@ -11,15 +11,15 @@
         Hello World
     </h1>
 
-    @can('view_site')
+    @can('view_posts')
         <h2>
-            Yes I can View
+            Yes I can View Posts
         </h2>
     @endcan
 
     @can('manage_site')
         <h3>
-            Yes I can Manage
+            Yes I can Manage the site
         </h3>
     @endcan
 </body>

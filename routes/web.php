@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('test');
-})->can('view_site');
+Route::get('/posts', function () {
+    return view('posts');
+})->can('view_posts');

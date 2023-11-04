@@ -31,7 +31,7 @@ return new class extends Migration {
 
         });
 
-        //Permission role Relationship
+        //Permission role PIVOT Relationship
         Schema::create('permission_role', function (Blueprint $table) {
             $table->foreignIdFor(Permission::class)
                 ->constrained()
@@ -45,7 +45,7 @@ return new class extends Migration {
 
         });
 
-        //Role user Relationship
+        //Role user PIVOT Relationship
         Schema::create('role_user', function (Blueprint $table) {
             $table->foreignIdFor(Role::class)
                 ->constrained()
