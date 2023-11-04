@@ -1,5 +1,5 @@
 
-# Laravel Roles And Permission
+# Laravel Roles And Permissions
 
 This project implements a simple yet powerful role permission features in Laravel
 
