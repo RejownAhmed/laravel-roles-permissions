@@ -21,7 +21,23 @@ To assign the created role to the user use the User method ``assignRole()``. Her
   
   ```php
   $role = Role::first();
-  $user->assignRole($role);
+  $user->detachRole($role);
+  ```
+
+### Detach a role from user
+To detach the created role from the user use the User method ``detachRole()``. Here's the process: 
+- Either pass the name of the role like: 
+
+  ```php 
+  $user = User::first();
+  $user->detachRole('manager');
+  ```
+
+- Or pass in the role model directly. E.g 
+  
+  ```php
+  $role = Role::first();
+  $user->detachRole($role);
   ```
 
 ### Add permissions to role
@@ -39,6 +55,22 @@ To add permissions to a role the Role method ``givePermissionTo()``. Here's the 
   ```php
   $permission = Permission::first();
   $role->givePermissionTo($permission);
+  ```
+### Revoke permission from a role
+
+To revoke/detach/remove a permission from a role the Role method ``revokePermission()``. Here's the process: 
+- Either pass the name of the permission like: 
+
+  ```php 
+  $role = Role::first();
+  $role->revokePermission('view_posts')
+  ```
+
+- Or pass in the role model directly. E.g 
+  
+  ```php
+  $permission = Permission::first();
+  $role->revokePermission($permission);
   ```
 
 ### Test the permissions
