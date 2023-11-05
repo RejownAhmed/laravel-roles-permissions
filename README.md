@@ -1,7 +1,7 @@
 
 # Laravel Roles And Permissions
 
-This project implements a simple yet powerful role permission features in Laravel
+This project implements a simple yet powerful role permission features in Laravel. Before diving into this project, let me clarify something, there is no front-end associated to create user, roles or permissions. You must create users, roles and permissions manually from the database or from the ``php artisan tinker`` command. After that, check the **``router/web.php``** file how I have authenticated the user and tested the permissions. 
 
 ### User manual
 - copy ``.env.example`` to ``.env`` and Update the ``.env`` file with your database informations and migrate
