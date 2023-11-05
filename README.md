@@ -21,7 +21,7 @@ To assign the created role to the user use the User method ``assignRole()``. Her
   
   ```php
   $role = Role::first();
-  $user->detachRole($role);
+  $user->assignRole($role);
   ```
 
 ### Detach a role from user
