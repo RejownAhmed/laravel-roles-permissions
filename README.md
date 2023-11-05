@@ -6,9 +6,42 @@ This project implements a simple yet powerful role permission features in Larave
 ### User manual
 - copy ``.env.example`` to ``.env`` and Update the ``.env`` file with your database informations and migrate
 - Create an user. Required fields are: ``full_name`` ``email`` ``password``
-- Create a role. Fields: ``name`` and ``label``
-- Create a permission. Fields: ``name`` and ``label``
-### Assign role to user
+
+  ``php artisan tinker``
+
+  ```php
+  namespace App\Models;
+  $user = new User();
+  $user->full_name = 'John doe';
+  $user->email = 'john@demo.com';
+  $user->password = 12345;
+  $user->save();
+  ```
+- Create a role. Required fields: ``name`` and ``label``
+  
+  ``php artisan tinker``
+
+  ```php
+  namespace App\Models;
+  $role = new Role();
+  $role->name = 'manager';
+  $role->label = 'Manager of the site';
+  $role->save();
+  ```
+  
+- Create a permission. Required fields: ``name`` and ``label``
+    
+  ``php artisan tinker``
+
+  ```php
+  namespace App\Models;
+  $permission = new Permission();
+  $permission->name = 'view_posts';
+  $permission->label = 'Can view posts';
+  $permission->save();
+  ```
+  
+### Assign the role to the user
 To assign the created role to the user use the User method ``assignRole()``. Here's the process: 
 - Either pass the name of the role like: 
 
@@ -24,7 +57,7 @@ To assign the created role to the user use the User method ``assignRole()``. Her
   $user->assignRole($role);
   ```
 
-### Detach a role from user
+### Detach the role from the user
 To detach the created role from the user use the User method ``detachRole()``. Here's the process: 
 - Either pass the name of the role like: 
 
@@ -40,7 +73,7 @@ To detach the created role from the user use the User method ``detachRole()``. H
   $user->detachRole($role);
   ```
 
-### Add permissions to role
+### Add permissions to the role
 
 To add permissions to a role the Role method ``givePermissionTo()``. Here's the process: 
 - Either pass the name of the permission like: 
@@ -56,7 +89,7 @@ To add permissions to a role the Role method ``givePermissionTo()``. Here's the 
   $permission = Permission::first();
   $role->givePermissionTo($permission);
   ```
-### Revoke permission from a role
+### Revoke permission from the role
 
 To revoke/detach/remove a permission from a role the Role method ``revokePermission()``. Here's the process: 
 - Either pass the name of the permission like: 
@@ -73,8 +106,9 @@ To revoke/detach/remove a permission from a role the Role method ``revokePermiss
   $role->revokePermission($permission);
   ```
 
-### Implementation
+### Implementation/Uses
 To test if the permission and role is working, you can simply use the ``can()`` method either on the route or in the blade file. For example:-
+**NOTE: By default checks for the authenticated user**
 - On the route itself. 
   
   ```php 
@@ -84,6 +118,27 @@ To test if the permission and role is working, you can simply use the ``can()`` 
   ```php 
   Route::get('/posts')->middleware('can:view_posts');
   ```
+- Maybe in controller constructor
+  ```php 
+  $this->middleware('can:view_posts')->only(['index', 'show']);
+  ```
+- Maybe in controller methods
+  ```php 
+  $user->can('view_posts');
+  ```
+  - Maybe using the help of Gate
+      ```php
+      Gate::allows('view_posts'); // Check if allowed
+      Gate::denies('view_posts');// Check if not allowed
+      
+      // Check by specific user
+      Gate::allows('view_posts', $user); // Check if allowed
+      Gate::denies('view_posts', $user);// Check if not allowed
+      
+      // Or maybe this way
+      Gate::forUser($user)->allows('view_posts'); // Check if allowed
+      Gate::forUser($user)->denies('view_posts');// Check if not allowed
+      ```
 - In laravel blade. 
   
   ```blade
