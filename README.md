@@ -125,6 +125,8 @@ To test if the permission and role is working, you can simply use the ``can()`` 
 - Maybe in controller methods
   ```php 
   $user->can('view_posts');
+  // Through authorize method
+  $this->authorize('view_posts');
   ```
   - Maybe using the help of Gate
       ```php
